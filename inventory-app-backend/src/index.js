@@ -43,6 +43,7 @@ app.post('/items', upload.single('image'), async (req, res) => {
     );
     res.json(result.rows[0]);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -53,6 +54,7 @@ app.get('/items', async (req, res) => {
     const result = await pool.query('SELECT * FROM items');
     res.json(result.rows);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -69,6 +71,7 @@ app.put('/items/:id', upload.single('image'), async (req, res) => {
     );
     res.json(result.rows[0]);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -80,6 +83,7 @@ app.delete('/items/:id', async (req, res) => {
     await pool.query('DELETE FROM items WHERE id = $1', [id]);
     res.json({ message: 'Item deleted' });
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -94,6 +98,7 @@ app.get('/items/search', async (req, res) => {
     );
     res.json(result.rows);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ error: err.message });
   }
 });

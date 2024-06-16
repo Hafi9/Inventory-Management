@@ -20,8 +20,8 @@ const ItemForm = ({ onItemAdded }) => {
     try {
       const response = await axios.post('http://localhost:3000/items', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
       onItemAdded(response.data);
       setName('');
